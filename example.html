@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Student Registration Form</title>
+    <style>
+        body {
+            background-image: linear-gradient(to right, #93beff, #a9bbff, #c1b7ff, #dab2ff, #f3acfb);
+            font-family: Arial, sans-serif;
+            color: #333;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .container p {
+            font-size: 30px;
+            margin-bottom: 20px;
+        }
+
+        .container hr {
+            margin: 20px 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        td {
+            padding: 10px;
+        }
+
+        input[type="text"],
+        select {
+            width: 100%;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            background-image: linear-gradient(to right, #cddaff, #d7d2ff);
+            font-size: 16px;
+        }
+
+        input[type="checkbox"] {
+            margin-right: 10px;
+        }
+
+        span {
+            font-size: 18px;
+        }
+
+        .info-table {
+            margin-top: 20px;
+        }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+</head>
+
+<body>
+    <div class="container" ng-app="myapp" ng-controller="myctrl">
+        <center>
+            <p>Student Registration Form</p>
+            <hr>
+            <table>
+                <tr>
+                    <td><span>Student Name:</span></td>
+                    <td><input type="text" ng-model="firstname"></td>
+                </tr>
+                <tr>
+                    <td><span>Surname:</span></td>
+                    <td><input type="text" ng-model="lastname"></td>
+                </tr>
+                <tr>
+                    <td><span>Full Name:</span></td>
+                    <td><span>{{firstname + " " + lastname}}</span></td>
+                </tr>
+                <tr>
+                    <td><span>Course:</span></td>
+                    <td>
+                        <select ng-model="selectedcourse" ng-options="y.course for (x, y) in courses"></select>
+                    </td>
+                </tr>
+            </table>
+            <table class="info-table" ng-hide="myvar">
+                <tr>
+                    <td><span>You Selected Course:</span></td>
+                    <td><span>{{selectedcourse.course}}</span></td>
+                </tr>
+                <tr>
+                    <td><span>Duration Of This Course:</span></td>
+                    <td><span>{{selectedcourse.year}}</span></td>
+                </tr>
+                <tr>
+                    <td><span>Course Fee:</span></td>
+                    <td><span>{{selectedcourse.fees}}</span></td>
+                </tr>
+            </table>
+            <input type="checkbox" ng-model="myvar"><span>Do you like to hide above information?</span>
+        </center>
+    </div>
+
+    <script>
+        var app = angular.module('myapp', []);
+        app.controller('myctrl', function($scope) {
+            $scope.firstname = "First Name";
+            $scope.lastname = "Last Name";
+            $scope.courses = {
+                course1: { course: "Computer E", year: "4", fees: "25000" },
+                course2: { course: "ME", year: "3", fees: "35000" },
+                course3: { course: "Civil E", year: "2", fees: "30000" },
+                course4: { course: "IT", year: "5", fees: "32000" },
+                course5: { course: "CSE", year: "6", fees: "29000" }
+            };
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,23 @@
+<html>
+<head>
+<title></title>
+<style></style>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+</head>
+<body ng-app="">
+    <p>Write in the input field :: </p>
+
+    <form name="myform">
+        Name: <input name="name" ng-model="name" required><br><br>
+        Email: <input name="email" ng-model="email" type="email" required>
+    </form>
+    <p>The input valid state is :: </p>
+    <h1>Valid:{{myform.name.$valid}}</h1>
+    <h1>Invalid:{{myform.name.$invalid}}</h1>
+    <h1>Touched:{{myform.name.$touched}}</h1>
+    <h1>Untouched:{{myform.name.$untouched}}</h1>
+    <h1>Pristine:{{myform.name.$pristine}}</h1>
+    <h1>Dirty:{{myform.name.$dirty}}</h1>
+    <h1>EmailValid:{{myform.email.$valid}}</h1>
+</body>
+</html>
